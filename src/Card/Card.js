@@ -13,7 +13,22 @@ export default function Card() {
   const [items, setItems] = useState([]);
   const [searchKeyword, setSearchKeyword] = useState("");
 
+  const filterData = items?.filter((student) => {
+    if (searchKeyword === "") {
+      return student;
+    } else if (
+      student.firstName.toLowerCase().includes(searchKeyword.toLowerCase())
+    ) {
+      return student;
+    } else if (
+      student.lastName.toLowerCase().includes(searchKeyword.toLowerCase())
+    ) {
+      return student;
+    }
+  });
+
   useEffect(() => {
+    //console.log(searchKeyword);
     axios
       .get(url)
       .then((res) => setItems(res.data.students))
@@ -24,7 +39,7 @@ export default function Card() {
     <div>
       <StudentContext.Provider value={{ setSearchKeyword }}>
         <Search />
-        {items?.map((item, index) => {
+        {filterData?.map((item, index) => {
           return <CardList key={index} item={item} />;
         })}
       </StudentContext.Provider>

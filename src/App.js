@@ -1,13 +1,13 @@
-import React from 'react'
-import Card from "./Card/Card"
+import React from "react";
+import Card from "./Card/Card";
+import "./App.css";
 
-const App=()=> {
+const App = () => {
   return (
     <div>
-      <Card/>
+      <Card />
     </div>
-  )
-}
+  );
+};
 
-export default App
-
+export default App;

@@ -8,12 +8,12 @@ import {
 } from "./CardList.style";
 
 export const CardList = ({ item }) => {
-  const getAverage = (x) => {
+  const getAverage = (grades) => {
     let sum = 0;
-    for (var i = 0; i < x.length; i++) {
-      sum += parseInt(x[i]);
+    for (let i = 0; i < grades.length; i++) {
+      sum += parseInt(grades[i]);
     }
-    return sum / x.length;
+    return sum / grades.length;
   };
 
   return (

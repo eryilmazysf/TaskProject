@@ -16,7 +16,7 @@ export const StyledText = styled.p`
   margin: 15px;
   font-family: "Raleway", sans-serif;
 `;
-export const StyledHeader = styled.p`
+export const StyledHeader = styled.h1`
   color: black;
   font-size: 1.5rem;
   font-weight: bold;
