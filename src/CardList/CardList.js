@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import {
   StyledCardWrapper,
   StyledText,
@@ -8,9 +8,16 @@ import {
   StyledButton,
   StyledToggle,
   StyledGrade,
+  StyledInputTag,
+  StyledFilterTag,
 } from "./CardList.style";
 
 export const CardList = ({ item }) => {
+  const [view, setView] = useState(false);
+  const [tag, setTag] = useState([]);
+
+  const tagRef = useRef();
+
   const getAverage = (grades) => {
     let sum = 0;
     for (let i = 0; i < grades.length; i++) {
@@ -18,8 +25,12 @@ export const CardList = ({ item }) => {
     }
     return sum / grades.length;
   };
-  const [view, setView] = useState(false);
-
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      setTag([...tag, tagRef?.current.value]);
+    }
+  };
+  console.log(tag);
   return (
     <StyledCardWrapper>
       <StyledImage src={item.pic} alt={"item poster"} />
@@ -31,6 +42,7 @@ export const CardList = ({ item }) => {
         <StyledText>Company:{item.company}</StyledText>
         <StyledText>Skill:{item.skill}</StyledText>
         <StyledText>Average:{getAverage(item.grades)}%</StyledText>
+
         <StyledGrade>
           {view &&
             item.grades.map((x, i) => (
@@ -39,6 +51,18 @@ export const CardList = ({ item }) => {
               </p>
             ))}
         </StyledGrade>
+        <StyledFilterTag tag={tag}>
+          {tag.map((t, i) => (
+            <label style={{ backgroundColor: "gray", margin: 5 }} key={i}>
+              {t}
+            </label>
+          ))}
+        </StyledFilterTag>
+        <StyledInputTag
+          ref={tagRef}
+          placeholder="Add a tag"
+          onKeyDown={handleKeyDown}
+        />
       </StyledContent>
       <StyledToggle>
         {view ? (

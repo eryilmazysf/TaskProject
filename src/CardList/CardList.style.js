@@ -49,3 +49,13 @@ export const StyledButton = styled.button`
 `;
 export const StyledToggle = styled.div``;
 export const StyledGrade = styled.div``;
+export const StyledInputTag = styled.input`
+  border: none;
+  outline: none;
+  padding: 0.5rem;
+  font-size: 1rem;
+  font-family: "Raleway", sans-serif;
+  border-bottom: 1px solid gray;
+  margin: 1rem;
+`;
+export const StyledFilterTag = styled.div``;
