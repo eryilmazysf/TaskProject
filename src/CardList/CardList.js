@@ -5,6 +5,9 @@ import {
   StyledImage,
   StyledHeader,
   StyledContent,
+  StyledButton,
+  StyledToggle,
+  StyledGrade,
 } from "./CardList.style";
 
 export const CardList = ({ item }) => {
@@ -15,6 +18,7 @@ export const CardList = ({ item }) => {
     }
     return sum / grades.length;
   };
+  const [view, setView] = useState(false);
 
   return (
     <StyledCardWrapper>
@@ -27,7 +31,22 @@ export const CardList = ({ item }) => {
         <StyledText>Company:{item.company}</StyledText>
         <StyledText>Skill:{item.skill}</StyledText>
         <StyledText>Average:{getAverage(item.grades)}%</StyledText>
+        <StyledGrade>
+          {view &&
+            item.grades.map((x, i) => (
+              <p key={i}>
+                Test {i} :{x}
+              </p>
+            ))}
+        </StyledGrade>
       </StyledContent>
+      <StyledToggle>
+        {view ? (
+          <StyledButton onClick={() => setView(false)}>-</StyledButton>
+        ) : (
+          <StyledButton onClick={() => setView(true)}>+</StyledButton>
+        )}
+      </StyledToggle>
     </StyledCardWrapper>
   );
 };

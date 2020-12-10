@@ -1,12 +1,14 @@
 import styled from "styled-components";
 
 export const StyledCardWrapper = styled.div`
-  display: flex;
+  display: inline-flex;
   margin: 1.5rem;
   border-bottom: 1px solid #9e9e9e;
+  width: 100%;
+  position: relative;
 `;
 export const StyledContent = styled.div`
-  margin: 1rem;
+  margin: auto;
 `;
 
 export const StyledText = styled.p`
@@ -30,4 +32,20 @@ export const StyledImage = styled.img`
   border-radius: 50%;
   border: 1px solid #bdbdbd;
   align-self: center;
+  margin: 1rem;
+  /* position: absolute; */
+  /* top: 1px; */
 `;
+export const StyledButton = styled.button`
+  background: none;
+  border: none;
+  position: absolute;
+  float: right;
+  right: 5px;
+  top: 5px;
+  color: #9e9e9e;
+  font-size: 4rem;
+  outline: none;
+`;
+export const StyledToggle = styled.div``;
+export const StyledGrade = styled.div``;
