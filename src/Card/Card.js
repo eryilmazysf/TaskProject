@@ -43,7 +43,7 @@ export default function Card() {
         <Search />
         <SearchTag />
         {filterData?.map((item, index) => {
-          return <CardList key={index} item={item} />;
+          return <CardList key={index} item={item} searchTag={searchTag} />;
         })}
       </StudentContext.Provider>
     </div>

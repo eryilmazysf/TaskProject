@@ -1,4 +1,5 @@
 import React, { useState, useRef } from "react";
+
 import {
   StyledCardWrapper,
   StyledText,
@@ -12,7 +13,7 @@ import {
   StyledFilterTag,
 } from "./CardList.style";
 
-export const CardList = ({ item }) => {
+export const CardList = ({ item, searchTag }) => {
   const [view, setView] = useState(false);
   const [tag, setTag] = useState([]);
 
@@ -28,9 +29,12 @@ export const CardList = ({ item }) => {
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
       setTag([...tag, tagRef?.current.value]);
+      tagRef.current.value = "";
     }
   };
   console.log(tag);
+  if (!tag.includes(searchTag) && searchTag !== "") return <></>;
+
   return (
     <StyledCardWrapper>
       <StyledImage src={item.pic} alt={"item poster"} />
@@ -51,7 +55,7 @@ export const CardList = ({ item }) => {
               </p>
             ))}
         </StyledGrade>
-        <StyledFilterTag tag={tag}>
+        <StyledFilterTag>
           {tag.map((t, i) => (
             <label style={{ backgroundColor: "gray", margin: 5 }} key={i}>
               {t}
