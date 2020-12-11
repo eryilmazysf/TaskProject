@@ -11,6 +11,7 @@ export const StyledCardWrapper = styled.div`
 
 export const StyledContent = styled.div`
   margin: auto;
+  text-align: center;
 `;
 
 export const StyledText = styled.p`

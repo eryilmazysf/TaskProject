@@ -17,6 +17,8 @@ export const CardList = ({ item, searchTag }) => {
   const [view, setView] = useState(false);
   const [tag, setTag] = useState([]);
 
+  //const [alltag, setAllTag] = useState([]);
+
   const tagRef = useRef();
 
   const getAverage = (grades) => {
@@ -33,15 +35,19 @@ export const CardList = ({ item, searchTag }) => {
     }
   };
 
-  //const result = tag?.filter((name) => name?.includes(searchTag));
+  if (tag.length > 0) {
+    const x = tag?.filter((name) => name?.includes(searchTag));
+    if (x.length > 0) {
+      console.log(x);
+    }
+  }
   //if (!tag.includes(searchTag) && searchTag !== "") return <></>;
-
   return (
     <StyledCardWrapper>
       <StyledImage src={item.pic} alt={"item poster"} />
       <StyledContent>
         <StyledHeader>
-          <div>{item.firstName}</div>
+          <div style={{ marginRight: 10 }}>{item.firstName}</div>
           <div>{item.lastName}</div>
         </StyledHeader>
         <StyledText>Email:{item.email}</StyledText>
