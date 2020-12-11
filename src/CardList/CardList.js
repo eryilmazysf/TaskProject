@@ -28,19 +28,21 @@ export const CardList = ({ item, searchTag }) => {
   };
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
-      setTag([...tag, tagRef?.current.value]);
+      setTag([...tag, tagRef?.current?.value]);
       tagRef.current.value = "";
     }
   };
-  console.log(tag);
-  if (!tag.includes(searchTag) && searchTag !== "") return <></>;
+
+  //const result = tag?.filter((name) => name?.includes(searchTag));
+  //if (!tag.includes(searchTag) && searchTag !== "") return <></>;
 
   return (
     <StyledCardWrapper>
       <StyledImage src={item.pic} alt={"item poster"} />
       <StyledContent>
         <StyledHeader>
-          {item.firstName} {item.lastName}
+          <div>{item.firstName}</div>
+          <div>{item.lastName}</div>
         </StyledHeader>
         <StyledText>Email:{item.email}</StyledText>
         <StyledText>Company:{item.company}</StyledText>
@@ -57,7 +59,15 @@ export const CardList = ({ item, searchTag }) => {
         </StyledGrade>
         <StyledFilterTag>
           {tag.map((t, i) => (
-            <label style={{ backgroundColor: "gray", margin: 5 }} key={i}>
+            <label
+              style={{
+                backgroundColor: "gray",
+                margin: 5,
+                padding: 5,
+                borderRadius: 3,
+              }}
+              key={i}
+            >
               {t}
             </label>
           ))}

@@ -30,7 +30,6 @@ export default function Card() {
   });
 
   useEffect(() => {
-    //console.log(searchKeyword);
     axios
       .get(url)
       .then((res) => setItems(res.data.students))
