@@ -11,6 +11,7 @@ import {
   StyledGrade,
   StyledInputTag,
   StyledFilterTag,
+  StyledTag,
 } from "./CardList.style";
 
 export const CardList = ({ item, searchTag }) => {
@@ -55,17 +56,7 @@ export const CardList = ({ item, searchTag }) => {
         </StyledGrade>
         <StyledFilterTag>
           {tag.map((t, i) => (
-            <label
-              style={{
-                backgroundColor: "gray",
-                margin: 5,
-                padding: 5,
-                borderRadius: 3,
-              }}
-              key={i}
-            >
-              {t}
-            </label>
+            <StyledTag key={i}>{t}</StyledTag>
           ))}
         </StyledFilterTag>
         <StyledInputTag

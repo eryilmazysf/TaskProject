@@ -21,6 +21,7 @@ export const StyledContent = styled.div`
     display: block;
     font-size: 1rem;
     width: 80%;
+    text-align: center;
   }
 `;
 
@@ -73,15 +74,20 @@ export const StyledInputTag = styled.input`
   border: none;
   outline: none;
   padding: 0.5rem;
-  font-size: 1vw;
-  text-align: center;
+  font-size: 1.5vw;
   font-family: "Raleway", sans-serif;
   border-bottom: 1px solid gray;
   margin: 1rem;
   @media (max-width: 880px) {
-    font-size: 3vw;
+    font-size: 2.5vw;
   }
 `;
 export const StyledFilterTag = styled.div`
-  font-size: 3vw;
+  font-size: 2vw;
+`;
+export const StyledTag = styled.label`
+  background-color: gray;
+  margin: 5px;
+  padding: 5px;
+  border-radius: 3px;
 `;

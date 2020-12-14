@@ -34,7 +34,7 @@ export default function Card() {
       .get(url)
       .then((res) => setItems(res.data.students))
       .catch((err) => console.log(err));
-  }, [searchKeyword]);
+  }, [searchKeyword, searchTag]);
 
   return (
     <div>
