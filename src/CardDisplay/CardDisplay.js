@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, Fragment } from "react";
 
 import {
   StyledCardWrapper,
@@ -12,9 +12,9 @@ import {
   StyledInputTag,
   StyledFilterTag,
   StyledTag,
-} from "./CardList.style";
+} from "./CardDisplay.style";
 
-export const CardList = ({ item, searchTag }) => {
+export const CardList = ({ item, searchTag, searchKeyword }) => {
   const [view, setView] = useState(false);
   const [tag, setTag] = useState([]);
 
@@ -33,7 +33,7 @@ export const CardList = ({ item, searchTag }) => {
       tagRef.current.value = "";
     }
   };
-
+  // All items in window
   const window = (
     <StyledCardWrapper>
       <StyledImage src={item.pic} alt={"item poster"} />
@@ -74,12 +74,24 @@ export const CardList = ({ item, searchTag }) => {
       </StyledToggle>
     </StyledCardWrapper>
   );
-
+  // Filter by firstName or lastName
+  const FilterData = () => {
+    if (searchKeyword === "") {
+      return window;
+    } else if (
+      item.firstName.toLowerCase().includes(searchKeyword.toLowerCase()) ||
+      item.lastName.toLowerCase().includes(searchKeyword.toLowerCase())
+    ) {
+      return window;
+    } else return <Fragment></Fragment>;
+  };
+  //Filter by Tag
   if (searchTag) {
-    const x = tag?.filter((name) => name?.includes(searchTag));
-    if (x.length > 0) return window;
-    else return <></>;
-  }
+    const x = tag?.filter((name) => name.includes(searchTag));
 
-  return window;
+    if (x.length > 0) {
+      FilterData();
+    } else return <Fragment></Fragment>;
+  }
+  return FilterData();
 };

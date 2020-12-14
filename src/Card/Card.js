@@ -1,13 +1,12 @@
 import React, { useEffect, useState, createContext } from "react";
 import axios from "axios";
-import { CardList } from "../CardList/CardList";
+import { CardList } from "../CardDisplay/CardDisplay";
 import { Search } from "../SearchBox/Search";
 import { SearchTag } from "../SearchBox/SearchTag";
 
 //api
 const url = "https://api.hatchways.io/assessment/students";
 
-//context
 export const StudentContext = createContext();
 
 export default function Card() {
@@ -15,36 +14,27 @@ export default function Card() {
   const [searchKeyword, setSearchKeyword] = useState("");
   const [searchTag, setSearchTag] = useState("");
 
-  const filterData = items?.filter((student) => {
-    if (searchKeyword === "") {
-      return student;
-    } else if (
-      student.firstName.toLowerCase().includes(searchKeyword.toLowerCase())
-    ) {
-      return student;
-    } else if (
-      student.lastName.toLowerCase().includes(searchKeyword.toLowerCase())
-    ) {
-      return student;
-    }
-  });
-
   useEffect(() => {
     axios
       .get(url)
       .then((res) => setItems(res.data.students))
       .catch((err) => console.log(err));
-  }, [searchKeyword, searchTag]);
+  }, []);
 
   return (
-    <div>
-      <StudentContext.Provider value={{ setSearchKeyword, setSearchTag }}>
-        <Search />
-        <SearchTag />
-        {filterData?.map((item, index) => {
-          return <CardList key={index} item={item} searchTag={searchTag} />;
-        })}
-      </StudentContext.Provider>
-    </div>
+    <StudentContext.Provider value={{ setSearchKeyword, setSearchTag }}>
+      <Search />
+      <SearchTag />
+      {items?.map((item, index) => {
+        return (
+          <CardList
+            key={index}
+            item={item}
+            searchTag={searchTag}
+            searchKeyword={searchKeyword}
+          />
+        );
+      })}
+    </StudentContext.Provider>
   );
 }
