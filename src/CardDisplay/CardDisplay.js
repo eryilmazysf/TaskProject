@@ -50,7 +50,7 @@ export const CardList = ({ item, searchTag, searchKeyword }) => {
           {view &&
             item.grades.map((x, i) => (
               <p key={i}>
-                Test {i} :{x}
+                Test {i + 1} :{x}
               </p>
             ))}
         </StyledGrade>
