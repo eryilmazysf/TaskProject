@@ -3,7 +3,6 @@ import styled from "styled-components";
 export const StyledCardWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
-  margin: 1.5rem;
   border-bottom: 1px solid #9e9e9e;
   width: 100%;
   position: relative;
@@ -20,25 +19,28 @@ export const StyledContent = styled.div`
   @media (max-width: 880px) {
     display: block;
     font-size: 1rem;
-    width: 80%;
+    width: 90%;
     text-align: center;
   }
 `;
 
 export const StyledText = styled.p`
-  color: #757575;
+  color: black;
   font-weight: bold;
-  margin: 15px;
+  margin: 5px;
+  margin-left: 1rem;
   font-family: "Raleway", sans-serif;
 `;
 export const StyledHeader = styled.h1`
   color: black;
   font-size: 2vw;
   font-weight: bold;
+  margin-left: 0.5rem;
 
   text-transform: uppercase;
   @media (max-width: 880px) {
     font-size: 3vw;
+    text-align: center;
   }
 `;
 
@@ -55,6 +57,8 @@ export const StyledImage = styled.img`
     position: unset;
   }
 `;
+export const StyledGradeText = styled.p``;
+
 export const StyledButton = styled.button`
   background: none;
   border: none;
@@ -63,12 +67,18 @@ export const StyledButton = styled.button`
   right: 1px;
   top: 1px;
   color: #9e9e9e;
-  font-size: 5vh;
+  font-size: 5vw;
   outline: none;
+  :hover {
+    color: black;
+  }
 `;
 export const StyledToggle = styled.div``;
 export const StyledGrade = styled.div`
   color: #757575;
+  margin-left: 1rem;
+  line-height: 1.5px;
+  margin-top: 3rem;
 `;
 export const StyledInputTag = styled.input`
   border: none;
@@ -78,6 +88,10 @@ export const StyledInputTag = styled.input`
   font-family: "Raleway", sans-serif;
   border-bottom: 1px solid gray;
   margin: 1rem;
+  background: none;
+  :focus {
+    border-bottom: 2px solid black;
+  }
   @media (max-width: 880px) {
     font-size: 2.5vw;
   }
@@ -86,8 +100,31 @@ export const StyledFilterTag = styled.div`
   font-size: 2vw;
 `;
 export const StyledTag = styled.label`
-  background-color: gray;
+  background-color: #e0e0e0;
   margin: 5px;
   padding: 5px;
   border-radius: 3px;
+`;
+
+export const Table = styled.table`
+  border-radius: 10px;
+  margin-top: 15%;
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+  background-color: white;
+`;
+export const Body = styled.tbody`
+  display: block;
+  overflow: auto;
+  height: 750px;
+  ::-webkit-scrollbar {
+    display: none;
+  }
+`;
+export const TR = styled.tr`
+  display: block;
+`;
+export const Head = styled.thead`
+  color: #fff;
 `;

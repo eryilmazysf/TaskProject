@@ -1,17 +1,17 @@
 import React, { useRef, useContext } from "react";
 import { StudentContext } from "../Card/Card";
-import { SearchWrapper, SearchInput } from "./Search.style";
+import { SearchWrapperTag, SearchInput } from "./Search.style";
 
 export const SearchTag = () => {
   const inputRef = useRef();
   const { setSearchTag } = useContext(StudentContext);
   return (
-    <SearchWrapper>
+    <SearchWrapperTag>
       <SearchInput
         ref={inputRef}
-        placeholder={"search by tag name"}
+        placeholder={"Search by tag"}
         onChange={() => setSearchTag(inputRef?.current.value)}
       />
-    </SearchWrapper>
+    </SearchWrapperTag>
   );
 };

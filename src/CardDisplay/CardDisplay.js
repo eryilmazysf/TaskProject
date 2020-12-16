@@ -12,14 +12,16 @@ import {
   StyledInputTag,
   StyledFilterTag,
   StyledTag,
+  StyledGradeText,
 } from "./CardDisplay.style";
 
 export const CardList = ({ item, searchTag, searchKeyword }) => {
-  const [view, setView] = useState(false);
-  const [tag, setTag] = useState([]);
+  const [view, setView] = useState(false); // toggle for grade
+  const [tag, setTag] = useState([]); //storage for tag
 
   const tagRef = useRef();
 
+  // calculate grade each students
   const getAverage = (grades) => {
     let sum = 0;
     for (let i = 0; i < grades.length; i++) {
@@ -33,7 +35,7 @@ export const CardList = ({ item, searchTag, searchKeyword }) => {
       tagRef.current.value = "";
     }
   };
-  // All items in window
+  // display all items in window
   const window = (
     <StyledCardWrapper>
       <StyledImage src={item.pic} alt={"item poster"} />
@@ -49,9 +51,9 @@ export const CardList = ({ item, searchTag, searchKeyword }) => {
         <StyledGrade>
           {view &&
             item.grades.map((x, i) => (
-              <p key={i}>
-                Test {i + 1} :{x}
-              </p>
+              <StyledGradeText key={i}>
+                Test {i + 1} : &nbsp; &nbsp; &nbsp; {x}%
+              </StyledGradeText>
             ))}
         </StyledGrade>
         <StyledFilterTag>
